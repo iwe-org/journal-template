@@ -1,0 +1,11 @@
+name: Chapters
+columns: [start, end]
+fields:
+  type:
+    hidden: true
+  example:
+    hidden: true
+  start:
+    title: Start
+  end:
+    title: End

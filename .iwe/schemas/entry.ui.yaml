@@ -1,0 +1,29 @@
+name: Journal
+columns: [date, mood]
+fields:
+  type:
+    hidden: true
+  example:
+    hidden: true
+  date:
+    title: Date
+  mood:
+    title: Mood
+    values:
+      awesome:
+        title: Awesome
+        color: green
+      good:
+        title: Good
+        color: teal
+      meh:
+        title: Meh
+        color: yellow
+      bad:
+        title: Bad
+        color: orange
+      awful:
+        title: Awful
+        color: red
+  tags:
+    title: Tags

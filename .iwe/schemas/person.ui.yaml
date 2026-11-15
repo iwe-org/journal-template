@@ -1,0 +1,40 @@
+name: People
+columns: [labels, stay_in_touch, last_contacted]
+fields:
+  type:
+    hidden: true
+  example:
+    hidden: true
+  created:
+    title: Added
+  birthday:
+    title: Birthday
+    description: YYYY-MM-DD, or MM-DD when the year is unknown.
+  deceased:
+    title: Deceased
+  labels:
+    title: Labels
+  emails:
+    title: Email
+  phones:
+    title: Phone
+  socials:
+    title: Socials
+  stay_in_touch:
+    title: Stay in touch
+    description: How often you want to be in touch.
+    values:
+      weekly:
+        title: Weekly
+        color: green
+      monthly:
+        title: Monthly
+        color: teal
+      quarterly:
+        title: Quarterly
+        color: blue
+      yearly:
+        title: Yearly
+        color: gray
+  last_contacted:
+    title: Last contacted

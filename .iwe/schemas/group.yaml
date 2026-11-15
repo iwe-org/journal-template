@@ -1,0 +1,28 @@
+$schema: https://document-schema.org/draft/2026-06/schema
+description: >-
+  A group of people (groups/<slug>.md): a family, a couple, a circle of
+  friends, a club. A single "# Name" heading holds a short paragraph and the
+  members, each linked on a line of its own so the person becomes a child of
+  the group. Members may be grouped by role under "## <Role>" headings, such
+  as "## Parents" and "## Children". kind names what sort of group it is.
+maxDepth: 2
+frontmatter:
+  type: object
+  required: [type, kind, created]
+  additionalProperties: false
+  properties:
+    type: { const: group }
+    kind:
+      enum: [family, couple, friends, club, association, roommates, team, other]
+      description: "kind is one of: family, couple, friends, club, association, roommates, team, other"
+    created:
+      type: string
+      format: date
+      description: created is the YYYY-MM-DD date the group was added
+    example:
+      const: true
+      description: example marks a sample document shipped with the template
+sections:
+  - maxContains: 1
+    description: a group is one "# Name" heading
+additionalSections: false

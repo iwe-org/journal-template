@@ -1,0 +1,108 @@
+$schema: https://document-schema.org/draft/2026-06/schema
+description: >-
+  One person in the user's life (people/<slug>.md). A single "# Name" heading
+  holds a short paragraph on who they are and then, all optional and in this
+  order, "## Relationships" (grouped under "### Love", "### Family",
+  "### Friends" and "### Work"), "## Work", "## Important dates", "## Pets",
+  "## Notes", "## Gifts", "## Loans" and "## To do". The user may add sections
+  of their own. Journal entries and events that mention the person are found
+  through back-links and are not copied here.
+maxDepth: 3
+frontmatter:
+  type: object
+  required: [type, created]
+  additionalProperties: false
+  properties:
+    type: { const: person }
+    created:
+      type: string
+      format: date
+      description: created is the YYYY-MM-DD date the person was added
+    nickname:
+      type: string
+      minLength: 1
+    pronouns:
+      type: string
+      minLength: 1
+      description: pronouns as the person uses them, such as she/her or they/them
+    birthday:
+      type: string
+      pattern: '^(\d{4}-)?\d{2}-\d{2}$'
+      description: birthday is YYYY-MM-DD, or MM-DD when the year is unknown
+    deceased:
+      type: string
+      pattern: '^(\d{4}-)?\d{2}-\d{2}$'
+      description: deceased is the YYYY-MM-DD date the person died, or MM-DD when the year is unknown
+    labels:
+      type: array
+      uniqueItems: true
+      items:
+        type: string
+        pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'
+      description: labels are lowercase kebab-case tags, such as climbing or book-club
+    emails:
+      type: array
+      items: { type: string, minLength: 1 }
+    phones:
+      type: array
+      items: { type: string, minLength: 1 }
+    socials:
+      type: array
+      items: { type: string, minLength: 1 }
+      description: socials are profile URLs or handles
+    address:
+      type: string
+      minLength: 1
+    stay_in_touch:
+      enum: [weekly, monthly, quarterly, yearly]
+      description: "stay_in_touch is how often the user wants to be in touch: weekly, monthly, quarterly or yearly"
+    last_contacted:
+      type: string
+      format: date
+      description: last_contacted is the YYYY-MM-DD date of the latest journal entry or event that mentions the person
+    example:
+      const: true
+      description: example marks a sample document shipped with the template
+sections:
+  - maxContains: 1
+    description: a person is one "# Name" heading holding the sections below
+    sections:
+      - header: { const: Relationships }
+        minContains: 0
+        maxContains: 1
+        description: >-
+          "## Relationships" groups the people this person is related to under
+          "### Love", "### Family", "### Friends" and "### Work", one list item
+          per relationship, such as "- Sister of [Kate Novak](kate-novak.md)"
+        sections:
+          - header: { enum: [Love, Family, Friends, Work] }
+            minContains: 0
+            maxContains: 4
+            description: 'groups are "### Love", "### Family", "### Friends" and "### Work"'
+        additionalSections: false
+      - header: { const: Work }
+        minContains: 0
+        maxContains: 1
+        description: '"## Work" says what the person does and links the organization they work for'
+      - header: { const: Important dates }
+        minContains: 0
+        maxContains: 1
+        description: '"## Important dates" lists dates other than the birthday, one "- YYYY-MM-DD: <what>" item each'
+      - header: { const: Pets }
+        minContains: 0
+        maxContains: 1
+      - header: { const: Notes }
+        minContains: 0
+        maxContains: 1
+      - header: { const: Gifts }
+        minContains: 0
+        maxContains: 1
+        description: '"## Gifts" is a task list: "- [ ] <gift> (<occasion>)" while it is an idea, checked once it is given'
+      - header: { const: Loans }
+        minContains: 0
+        maxContains: 1
+        description: '"## Loans" is a task list: "- [ ] Lent <what> (YYYY-MM-DD)" or "- [ ] Borrowed <what> (YYYY-MM-DD)", checked once it is returned'
+      - header: { const: To do }
+        minContains: 0
+        maxContains: 1
+additionalSections: false

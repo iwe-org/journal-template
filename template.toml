@@ -1,0 +1,8 @@
+format = 1
+id = "journal"
+name = "Journal"
+description = "A private journal and personal CRM: daily entries, the people in your life, how they are related and what happened to them."
+version = "1.0.0"
+authors = ["iWe"]
+license = "MIT"
+exclude = ["README.md", "CHANGELOG.md"]

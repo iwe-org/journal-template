@@ -1,0 +1,27 @@
+$schema: https://document-schema.org/draft/2026-06/schema
+description: >-
+  A company, school or other organization people belong to
+  (organizations/<slug>.md). A single "# Name" heading holds what the user
+  knows about it. People link it from their "## Work" section, so who works
+  there is found through back-links and is not listed here.
+maxDepth: 2
+frontmatter:
+  type: object
+  required: [type, created]
+  additionalProperties: false
+  properties:
+    type: { const: organization }
+    created:
+      type: string
+      format: date
+      description: created is the YYYY-MM-DD date the organization was added
+    website:
+      type: string
+      minLength: 1
+    example:
+      const: true
+      description: example marks a sample document shipped with the template
+sections:
+  - maxContains: 1
+    description: an organization is one "# Name" heading
+additionalSections: false

@@ -1,0 +1,35 @@
+$schema: https://document-schema.org/draft/2026-06/schema
+description: >-
+  A journal entry (journal/YYYY-MM-DD.md, or journal/YYYY-MM-DD-<slug>.md for
+  a second entry on the same day). A single "# <date or title>" heading holds
+  the entry in the user's words; any sections under it are the user's own.
+  Every person mentioned is linked inside a sentence. date is the day the
+  entry is about, mood how the day felt and tags its topics.
+maxDepth: 3
+frontmatter:
+  type: object
+  required: [type, date]
+  additionalProperties: false
+  properties:
+    type: { const: entry }
+    date:
+      type: string
+      format: date
+      description: date is the YYYY-MM-DD date the entry is about
+    mood:
+      enum: [awesome, good, meh, bad, awful]
+      description: "mood is one of: awesome, good, meh, bad, awful"
+    tags:
+      type: array
+      uniqueItems: true
+      items:
+        type: string
+        pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'
+      description: tags are lowercase kebab-case topics
+    example:
+      const: true
+      description: example marks a sample document shipped with the template
+sections:
+  - maxContains: 1
+    description: an entry is one "# <date or title>" heading
+additionalSections: false

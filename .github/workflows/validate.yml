@@ -1,0 +1,13 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    uses: iwe-org/templates/.github/workflows/validate.yml@main

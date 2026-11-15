@@ -1,0 +1,11 @@
+name: Organizations
+columns: [website]
+fields:
+  type:
+    hidden: true
+  example:
+    hidden: true
+  created:
+    title: Added
+  website:
+    title: Website

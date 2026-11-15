@@ -1,0 +1,36 @@
+name: Groups
+columns: [kind]
+fields:
+  type:
+    hidden: true
+  example:
+    hidden: true
+  created:
+    title: Added
+  kind:
+    title: Kind
+    values:
+      family:
+        title: Family
+        color: purple
+      couple:
+        title: Couple
+        color: red
+      friends:
+        title: Friends
+        color: green
+      club:
+        title: Club
+        color: blue
+      association:
+        title: Association
+        color: teal
+      roommates:
+        title: Roommates
+        color: orange
+      team:
+        title: Team
+        color: yellow
+      other:
+        title: Other
+        color: gray

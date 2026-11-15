@@ -1,0 +1,29 @@
+$schema: https://document-schema.org/draft/2026-06/schema
+description: >-
+  A chapter of the user's life (chapters/<slug>.md): a trip, a year abroad, a
+  new job, a hard season. A single "# Title" heading holds a paragraph on what
+  the chapter is, then the journal entries and events that belong to it,
+  each linked on a line of its own in the order they happened. start is the
+  day it began and end the day it ended, absent while it is still going.
+maxDepth: 2
+frontmatter:
+  type: object
+  required: [type, start]
+  additionalProperties: false
+  properties:
+    type: { const: chapter }
+    start:
+      type: string
+      format: date
+      description: start is the YYYY-MM-DD date the chapter began
+    end:
+      type: string
+      format: date
+      description: end is the YYYY-MM-DD date the chapter ended; omit it while the chapter is still going
+    example:
+      const: true
+      description: example marks a sample document shipped with the template
+sections:
+  - maxContains: 1
+    description: a chapter is one "# Title" heading
+additionalSections: false

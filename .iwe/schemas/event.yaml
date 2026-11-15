@@ -1,0 +1,31 @@
+$schema: https://document-schema.org/draft/2026-06/schema
+description: >-
+  Something that happened in someone's life (events/YYYY-MM-DD-<slug>.md): a
+  move, a new job, a wedding, a birth, a loss. A single "# Title" heading
+  says what happened and links every person it happened to inside its
+  sentences. date is the day it happened, category the area of life and
+  emotion how it felt.
+maxDepth: 2
+frontmatter:
+  type: object
+  required: [type, date, category]
+  additionalProperties: false
+  properties:
+    type: { const: event }
+    date:
+      type: string
+      format: date
+      description: date is the YYYY-MM-DD date the event happened
+    category:
+      enum: [love, family, friends, work, education, home, health, travel, milestone, loss, other]
+      description: "category is one of: love, family, friends, work, education, home, health, travel, milestone, loss, other"
+    emotion:
+      enum: [positive, neutral, negative]
+      description: "emotion is one of: positive, neutral, negative"
+    example:
+      const: true
+      description: example marks a sample document shipped with the template
+sections:
+  - maxContains: 1
+    description: an event is one "# Title" heading
+additionalSections: false

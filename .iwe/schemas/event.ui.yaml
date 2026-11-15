@@ -1,0 +1,57 @@
+name: Events
+columns: [date, category, emotion]
+fields:
+  type:
+    hidden: true
+  example:
+    hidden: true
+  date:
+    title: Date
+  category:
+    title: Category
+    values:
+      love:
+        title: Love
+        color: red
+      family:
+        title: Family
+        color: purple
+      friends:
+        title: Friends
+        color: green
+      work:
+        title: Work
+        color: blue
+      education:
+        title: Education
+        color: teal
+      home:
+        title: Home
+        color: orange
+      health:
+        title: Health
+        color: yellow
+      travel:
+        title: Travel
+        color: teal
+      milestone:
+        title: Milestone
+        color: purple
+      loss:
+        title: Loss
+        color: gray
+      other:
+        title: Other
+        color: gray
+  emotion:
+    title: Emotion
+    values:
+      positive:
+        title: Positive
+        color: green
+      neutral:
+        title: Neutral
+        color: gray
+      negative:
+        title: Negative
+        color: red
